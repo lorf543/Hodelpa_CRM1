@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="body-image"> 
+
+
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container mt-5" >
+    <div class="px-4 pt-5 my-6 text-center">
+      <h1 class="display-4 fw-bold text-dark ">Caribe Colonial</h1>  
+      <div class="col-lg-6 mx-auto">
+        <p class="lead text-dark bold ">Bienvevidos la primera version de CRM Caribe Colonial, auque aun faltan muchas funciones por ser implementadas es bastante capaz en lo poco que hace, <b> aminstracion de habitaciones</b>,  <b> agendas para el Gym</b>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+          {% if request.user.is_authenticated %}
+            <a href=" {%url 'home'%}" class = "btn btn-primary btn-lg px-4 me-sm-3 ">entrar</a>
+          {% else %}
+          <a href=" {%url 'login'%}" class = "btn btn-primary btn-lg px-4 me-sm-3 "> Log In</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br><br><br><br>
+  <br>
+
+
+</section>
+{% endblock content %}
+

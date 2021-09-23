@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "navbar.html" %}
+<div class="container px-4 py-1" id="hanging-icons">
+    <h2 class="pb-2 border-bottom">Listado de havitaciones limpias sin asignar</h2>
+    <div class="row g-1 py-2 row-cols-1 row-cols-lg-1">
+  
+        <table class="table table-bordered table-hover table-dark table-striped">
+            <thead>
+              <tr>
+                <th>Numero</th>
+                <th>Categoria</th>
+                <th>Estado</th>
+                <th>Distinciones</th>
+                <th>Estado</th>
+                <th>Piso</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                {% for x  in total_havitaciones %}
+                {% if x.estado == "Libre" %}
+                
+                  
+                
+                  
+                
+                <tr>
+                <td> {{x.numero}} </td>
+                <td> {{x.category}}  </td>
+                <td> {{x.estado}} | <a href=" {%url 'update' x.id%} " class="btn btn-primary btn-sm">editar</a> </td>
+                <td> {{x.distinciones}} </td>
+                <td> {{x.numero}} </td>
+                <td> {{x.piso}} </td>
+                </tr>
+                
+                {% endif %}
+                {% endfor %}
+            </tbody>
+          </table>
+
+    
+      
+      </div>
+    </div>
+  </div>
+  
+ 
+{% endblock content %}

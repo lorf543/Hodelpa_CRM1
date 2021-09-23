@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<script src = { % static "mian.js" %} defer></script>
+
+
+
+{% include "navbar.html" %}
+
+<div class="container">
+  <div class="d-grid gap-2">
+    <a href=" {%url 'gym-create'%} " class="btn btn-success btn-lg" type="submit" >Agendar</a>
+  </div>
+</div>
+
+
+  <div class="container"> 
+    <table class="table table-bordered table-hover table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Habitacion</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Dia</th>
+          <th scope="col">Inicion</th>
+          <th scope="col">Termina</th>
+          <th scope="col">Borrar</th>
+        </tr>
+      </thead>
+
+       
+
+      {% for i in todo %}
+      <tbody>
+        <tr>
+          <th>{{i.habitacion}}</th>
+          <td> {{i.nombre}} </td>
+          <td> {{i.date}} </td>
+          <td> {{i.timestart}} </td>
+          <td>{{i.timeend}} </td>
+          <td> <a href=" {%url 'gym-delete' i.pk %} " class="btn btn-danger btn-sm" type="submit" >Eliminar</a> </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+  </div>
+<center>
+{% if messages %}
+
+{% for m in messages  %}
+<script>
+    Swal.fire({
+      icon: 'success',
+      title: '{{m}}!!!',
+    })
+</script>
+{% endfor %}
+
+{% endif %}
+</center>
+
+{% endblock content %}

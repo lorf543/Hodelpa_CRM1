@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Status Bar -->
+{% include "navbar.html" %}
+<section class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="border border-dark">
+            <div class="card-header py-3 text-white bg-dark">
+              <h4 class="my-0 fw-normal "><a class="text-white" href=" {%url 'limpias'%} ">Habitaciones Limpias</a> </h4></h4>
+            </div>
+            <div class="card-body card-color">
+              <h1 class="card-title pricing-card-title"> {{limpias}} </h1>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="border border-dark">
+            <div class="card-header py-3 text-white bg-dark">
+              <h4 class="my-0 fw-normal"><a class="text-white" href=" {%url 'ocupadas'%} ">Habitaciones Ocupadas</a> </h4></h4>
+            </div>
+            <div class="card-body card-color">
+              <h1 class="card-title pricing-card-title"> {{ocupadas}} </h1>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="border border-dark ">
+            <div class="card-header py-3 text-white bg-dark">
+              <h4 class="my-0 fw-normal"> <a class="text-white" href="{%url 'sucias'%} ">Habitaciones Sucias</a> </h4>
+            </div>
+            <div class="card-body card-color">
+              <h1 class="card-title pricing-card-title"> {{sucias}} </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<div class="container-fluid">
+  {% if messages %}
+
+  {% for m in messages  %}
+    {{m}}
+  {% endfor %}
+  
+{% endif %}
+<table class="table table-bordered table-hover table-dark table-striped">
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Categoria</th>
+      <th>Estado</th>
+      <th>Distinciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      {% for x  in  entity %}
+      <tr>
+      <td> {{x.numero}} | <a href="#" class="btn btn-danger btn-sm">eliminar</a> </td>
+      <td> {{x.category}}  </td>
+      <td> {{x.estado}} | <a href=" {%url 'update' x.id%} " class="btn btn-primary btn-sm">editar</a> </td>
+      <td> {{x.distinciones}} </td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+
+{% include "habitaciones/paginator.html" %}
+
+
+{% endblock content %}

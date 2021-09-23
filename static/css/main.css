@@ -1,0 +1,21 @@
+.body-image {
+    background: url("/static/images/hodelpa\ Caribe\ Colonial_image.jpg") 100%;
+    
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size: cover;
+
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.body-class {
+    background:#fff;
+}
+
+.card-color {
+    background:#fff;
+}
+
